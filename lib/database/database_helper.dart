@@ -4,5 +4,5 @@ class DatabaseHelper {
   DatabaseHelper._();
   static final DatabaseHelper instance = DatabaseHelper._();
 
-  final notesQueries = NotesQueries();
+  final NotesQueries notesQueries = NotesQueries();
 }

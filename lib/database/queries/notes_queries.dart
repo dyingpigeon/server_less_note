@@ -9,6 +9,21 @@ class NotesQueries {
     return await database.query('notes', limit: 500);
   }
 
+  Future<List<Map<String, dynamic>>> getNoteTitles() async {
+    final database = await db;
+    return await database.query('notes', columns: ['id', 'title'], limit: 500);
+  }
+
+  Future<List<Map<String, dynamic>>> getNoteBody(int id) async {
+    final database = await db;
+    return await database.query(
+      'notes',
+      columns: ['body'],
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+
   Future<int> insertNote(Map<String, dynamic> note) async {
     final database = await DatabaseCore.instance.database;
     return await database.insert('notes', note);
